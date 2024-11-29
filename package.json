@@ -1,0 +1,27 @@
+{
+  "name": "koagraphqlts",
+  "version": "1.0.0",
+  "description": "build with koa graphql and typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec  tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "leon zhang",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/koa": "^2.15.0",
+    "@types/node": "^22.10.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "apollo-server-koa": "^3.13.0",
+    "casual": "^1.6.2",
+    "graphql": "^16.9.0",
+    "koa": "^2.15.3",
+    "nodemon": "^3.1.7",
+    "tsx": "^4.19.2"
+  }
+}
