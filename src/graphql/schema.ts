@@ -4,6 +4,7 @@ const userSchema = gql`
   type Query {
     user(id: Int!): User
     allUsers: [User]
+    getOrders: order
   }
 
   type User {
@@ -12,6 +13,18 @@ const userSchema = gql`
     hobbies: [String!]
     id: Int!
     name: String!
+  }
+  type orderItem {
+    id: String
+    name: String
+    value: Int
+  }
+  type order {
+    orderId: String
+    sequence: Int
+    marketplaceServicesEndpoint: String
+    origin: String
+    totals: [orderItem]
   }
 `;
 export default userSchema;

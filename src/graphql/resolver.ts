@@ -1,5 +1,6 @@
 import { getUserByIndex } from "../service/datastore";
 import { resolverArg } from "../graphql/interfaces";
+import { fetchDatafromVtex } from "../service/service";
 const userQueryResolver = (_: any, args: resolverArg) => {
   return args.id;
 };
@@ -7,6 +8,7 @@ const userQueryResolver = (_: any, args: resolverArg) => {
 const allUsersQueryResolver = () => {
   return new Array(10).fill(0).map((_, index) => index);
 };
+
 const UserTypeResolver = {
   age: (id: number) => {
     const user = getUserByIndex(id);
@@ -30,6 +32,13 @@ const UserTypeResolver = {
   },
 };
 export default {
-  Query: { user: userQueryResolver, allUsers: allUsersQueryResolver },
+  Query: {
+    user: userQueryResolver,
+    allUsers: allUsersQueryResolver,
+    getOrders: async () => {
+      const testData = await fetchDatafromVtex();
+      return testData;
+    },
+  },
   User: UserTypeResolver,
 };
