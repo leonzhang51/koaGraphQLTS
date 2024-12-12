@@ -1,4 +1,5 @@
 import axios from "axios";
+import { dbConnect } from "./db.service";
 export const fetchDatafromVtex = async () => {
   let config = {
     method: "get",
@@ -21,4 +22,18 @@ export const fetchDatafromVtex = async () => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const fetchCarDatafromPostgresSqlServer = async () => {
+  const result = await dbConnect(`SELECT * FROM public.cars`);
+  console.log(result);
+  return result;
+};
+
+export const addCar = async (brand: string, model: string, year: string) => {
+  const result = await dbConnect(
+    `INSERT INTO "First".public.cars(brand, model, year) VALUES ('${brand}', '${model}', '${year}')`,
+  );
+  console.log(result);
+  return result;
 };

@@ -5,8 +5,12 @@ const userSchema = gql`
     user(id: Int!): User
     allUsers: [User]
     getOrders: order
+    getCars: [Cars]
   }
 
+  type Mutation {
+    addCar(brand: String!, model: String!, year: String!): String
+  }
   type User {
     age: Int!
     email: String!
@@ -25,6 +29,11 @@ const userSchema = gql`
     marketplaceServicesEndpoint: String
     origin: String
     totals: [orderItem]
+  }
+  type Cars {
+    brand: String
+    model: String
+    year: String
   }
 `;
 export default userSchema;
